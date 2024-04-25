@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:pomodoro/productivity_button.dart';
+import 'package:pomodoro/services/timer.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,21 +16,19 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark(),
-      home: const HomeScreen(),
+      home: HomeScreen(),
     );
   }
 }
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class HomeScreen extends StatelessWidget {
+  HomeScreen({super.key});
 
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
+  final CountDownTimer timer = CountDownTimer();
 
-class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    timer.startWork();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.orange[600],
@@ -79,7 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 lineWidth: 10,
                 backgroundColor: Colors.orange[700] ?? Colors.orange,
                 center: Text(
-                  '34:44',
+                  '4535',
                   style: const TextStyle(
                       fontSize: 28, fontWeight: FontWeight.bold),
                 ),
