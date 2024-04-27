@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'screens/homepage.dart';
+import 'package:todo/screens/add_item.dart';
 
 void main() {
   runApp(const Todo());
@@ -14,7 +13,7 @@ class Todo extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData.dark(),
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: AddItems(),
     );
   }
 }
