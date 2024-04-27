@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:todo/widgets/category_icons.dart';
 
 class AddItems extends StatelessWidget {
@@ -43,7 +44,9 @@ class AddItems extends StatelessWidget {
             ),
             const TextField(
               decoration: InputDecoration(
-                  fillColor: Colors.white, border: OutlineInputBorder()),
+                  filled: true,
+                  fillColor: Colors.white,
+                  border: OutlineInputBorder()),
             ),
             const SizedBox(
               height: 40,
@@ -105,9 +108,12 @@ class AddItems extends StatelessWidget {
                         style: TextStyle(color: Colors.black87),
                         cursorColor: Colors.black87,
                         decoration: InputDecoration(
+                            filled: true,
+                            fillColor: Colors.white,
                             focusedBorder: OutlineInputBorder(
                                 borderSide: BorderSide(color: Colors.black87)),
                             suffixIcon: Icon(
+                              size: 35,
                               Icons.calendar_today,
                               color: Colors.black87,
                             ),
@@ -121,9 +127,12 @@ class AddItems extends StatelessWidget {
                         style: TextStyle(color: Colors.black87),
                         cursorColor: Colors.black87,
                         decoration: InputDecoration(
+                            fillColor: Colors.white,
+                            filled: true,
                             focusedBorder: OutlineInputBorder(
                                 borderSide: BorderSide(color: Colors.black87)),
                             suffixIcon: Icon(
+                              size: 35,
                               Icons.schedule_outlined,
                               color: Colors.black87,
                             ),
@@ -131,6 +140,9 @@ class AddItems extends StatelessWidget {
                       ),
                     ),
                   ],
+                ),
+                SizedBox(
+                  height: 40,
                 ),
                 const Text(
                   'Notes',
@@ -140,22 +152,37 @@ class AddItems extends StatelessWidget {
                     fontSize: 16,
                   ),
                 ),
-                SizedBox(
-                  height: 100,
+                Container(
+                  height: 220,
                   child: TextField(
-                    decoration: InputDecoration(border: OutlineInputBorder()),
+                    expands: true,
+                    maxLines: null,
+                    decoration: InputDecoration(
+                        filled: true,
+                        fillColor: Colors.white,
+                        border: OutlineInputBorder()),
                   ),
                 ),
                 SizedBox(
+                  height: 50,
+                ),
+
+                SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
+                        style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all(Color(0xFF240A34))),
                         onPressed: () {},
-                        child: const Text(
-                          "Save",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20),
+                        child: Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: const Text(
+                            "Save",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20),
+                          ),
                         )))
               ],
             ),
