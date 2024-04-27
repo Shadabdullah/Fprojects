@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class Ch2Home extends StatelessWidget {
-  const Ch2Home({super.key});
+class Ch3Home extends StatelessWidget {
+  const Ch3Home({super.key});
 
   @override
   Widget build(BuildContext context) {
