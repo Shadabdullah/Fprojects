@@ -1,23 +1,42 @@
-import 'package:assignments/ch4/bloc/counter_bloc.dart';
-import 'package:assignments/ch4/homepage.dart';
+// import 'package:flutter/material.dart';
+// import 'package:flutter_bloc/flutter_bloc.dart';
+//
+// void main() {
+//   runApp(Assignment());
+// }
+//
+// class Assignment extends StatelessWidget {
+//   const Assignment({super.key});
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return MultiBlocProvider(
+//       providers: [BlocProvider(create: (_) => CounterBloc())],
+//       child: MaterialApp(
+//           theme: ThemeData(useMaterial3: true),
+//           debugShowCheckedModeBanner: false,
+//           home: Ch4Home()),
+//     );
+//   }
+// }
+
+//Todo[App]
+
+import 'package:assignments/ch5Todo/homepage.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
-  runApp(Assignment());
+  runApp(TodoApp());
 }
 
-class Assignment extends StatelessWidget {
-  const Assignment({super.key});
+class TodoApp extends StatelessWidget {
+  const TodoApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [BlocProvider(create: (_) => CounterBloc())],
-      child: MaterialApp(
-          theme: ThemeData(useMaterial3: true),
-          debugShowCheckedModeBanner: false,
-          home: Ch4Home()),
-    );
+    return MaterialApp(
+        theme: ThemeData(useMaterial3: true),
+        debugShowCheckedModeBanner: false,
+        home: TodoHomePage());
   }
 }
