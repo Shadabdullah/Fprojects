@@ -1,5 +1,4 @@
-import 'package:assignments/ch3/cubit/counter_cubit.dart';
-import 'package:assignments/ch3/homepage.dart';
+import 'package:assignments/ch4/bloc/counter_bloc.dart';
 import 'package:assignments/ch4/homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,9 +12,12 @@ class Assignment extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        theme: ThemeData(useMaterial3: true),
-        debugShowCheckedModeBanner: false,
-        home: Ch4HomePage());
+    return MultiBlocProvider(
+      providers: [BlocProvider(create: (_) => CounterBloc())],
+      child: MaterialApp(
+          theme: ThemeData(useMaterial3: true),
+          debugShowCheckedModeBanner: false,
+          home: Ch4Home()),
+    );
   }
 }
