@@ -22,7 +22,8 @@
 
 //Todo[App]
 
-import 'package:assignments/ch5Todo/homepage.dart';
+import 'package:assignments/ch5Todo/add_todo.dart';
+import 'package:assignments/ch5Todo/todo_list.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -35,8 +36,16 @@ class TodoApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        theme: ThemeData(useMaterial3: true),
-        debugShowCheckedModeBanner: false,
-        home: TodoHomePage());
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      initialRoute: '/',
+      routes: {
+        '/': (_) => const TodoList(),
+        '/add-todo': (_) => const AddTodoPage(),
+      },
+    );
   }
 }
