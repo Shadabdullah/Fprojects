@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:todo/screens/add_item.dart';
 import 'package:todo/widgets/item_container.dart';
 
 class HomePage extends StatefulWidget {
@@ -114,7 +114,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             const SizedBox(
-              height: 10,
+              height: 50,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -124,7 +124,10 @@ class _HomePageState extends State<HomePage> {
                       style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all(
                               const Color(0xFF240A34))),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => AddItems()));
+                      },
                       child: const Padding(
                         padding: EdgeInsets.all(12.0),
                         child: Text(

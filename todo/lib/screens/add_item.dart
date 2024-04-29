@@ -19,7 +19,9 @@ class AddItems extends StatelessWidget {
               borderRadius: BorderRadius.circular(100),
             ),
             child: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pop(context);
+              },
               color: Colors.black,
               icon: const Icon(Icons.close),
             ),
@@ -34,7 +36,7 @@ class AddItems extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(10.0),
+          padding: const EdgeInsets.all(20.0),
           child: Column(
             children: [
               const Text(
