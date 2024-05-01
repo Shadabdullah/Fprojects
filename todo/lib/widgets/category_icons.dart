@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class CategoryIcon extends StatelessWidget {
   final IconData icon;
+  final String categoryName;
   final Color color;
   Function(String)? onPressed;
 
@@ -9,6 +10,7 @@ class CategoryIcon extends StatelessWidget {
       {required this.icon,
       required this.color,
       required this.onPressed,
+      required this.categoryName,
       super.key});
 
   @override
@@ -17,8 +19,7 @@ class CategoryIcon extends StatelessWidget {
         padding: const EdgeInsets.all(8),
         child: InkWell(
           onTap: () {
-            String data = "NIce";
-            onPressed?.call(data);
+            onPressed?.call(categoryName);
           },
           child: Container(
             width: 50,
