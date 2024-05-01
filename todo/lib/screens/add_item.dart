@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:todo/bloc/todo_bloc.dart';
+import 'package:todo/bloc/todo_event.dart';
+import 'package:todo/database/database_helper.dart';
+import 'package:todo/models/todo_model.dart';
 import 'package:todo/widgets/category_icons.dart';
 
 class AddItems extends StatefulWidget {
@@ -27,7 +32,6 @@ class _AddItemsState extends State<AddItems> {
 
   @override
   Widget build(BuildContext context) {
-    print(timeController.text);
     return Scaffold(
       resizeToAvoidBottomInset: true,
       backgroundColor: const Color(0xFFF1F5F9),
@@ -231,7 +235,7 @@ class _AddItemsState extends State<AddItems> {
                           style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.all(
                                   const Color(0xFF240A34))),
-                          onPressed: () {},
+                          onPressed: _addItems,
                           child: const Padding(
                             padding: EdgeInsets.all(16.0),
                             child: Text(
@@ -281,5 +285,16 @@ class _AddItemsState extends State<AddItems> {
     String period = time.period == DayPeriod.am ? 'AM' : 'PM';
 
     return '$hour:$minute $period';
+  }
+
+  void _addItems() {
+    BlocProvider.of<BlocTodo>(context).add(AddTodo(
+        todo: Todo(
+            title: titleController.text,
+            time: timeController.text,
+            dueDate: dateController.text,
+            category: categoryHandler,
+            isDone: 0,
+            note: noteController.text)));
   }
 }

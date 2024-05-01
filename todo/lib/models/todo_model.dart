@@ -1,8 +1,8 @@
 class Todo {
   int? id;
   String title;
-  DateTime time;
-  DateTime dueDate;
+  String time;
+  String dueDate;
   String category;
   int isDone;
   String note;
@@ -21,8 +21,8 @@ class Todo {
     return {
       if (id != null) 'id': id,
       'title': title,
-      'time': time.toIso8601String(),
-      'dueDate': dueDate.toIso8601String(),
+      'time': time,
+      'dueDate': dueDate,
       'category': category,
       'isDone': isDone == 1 ? 1 : 0,
       'note': note,

@@ -45,8 +45,8 @@ class DbHelper {
         maps.length,
         (index) => Todo(
           title: maps[index]['title'],
-          time: DateTime.parse(maps[index]['time']),
-          dueDate: DateTime.parse(maps[index]['dueDate']),
+          time: maps[index]['time'],
+          dueDate: maps[index]['dueDate'],
           category: maps[index]['category'],
           isDone: maps[index]['isDone'],
           note: maps[index]['note'],
