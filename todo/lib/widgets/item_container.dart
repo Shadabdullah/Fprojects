@@ -13,7 +13,7 @@ class ItemContainer extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          CategoryIcon(icon: Icons.dining_outlined, color: Colors.yellow[100]!),
+          // CategoryIcon(icon: Icons.dining_outlined, color: Colors.yellow[100]!),
           const Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:todo/database/database_helper.dart';
 import 'package:todo/screens/add_item.dart';
 import 'package:todo/widgets/item_container.dart';
+
+import '../models/todo_model.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -10,8 +13,23 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final List<Todo> items = [];
+  final db = DbHelper();
+  Future<void> _loadDatabase() async {
+    final items = await db.getListOfTodo();
+    print(items);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _loadDatabase();
+  }
+
   @override
   Widget build(BuildContext context) {
+// Get the path to the directory where databases are stored
+    // Color(0xFFF1F5F9),
     return Scaffold(
       backgroundColor: const Color(0xFFF1F5F9),
       appBar: AppBar(
@@ -138,6 +156,9 @@ class _HomePageState extends State<HomePage> {
                               fontSize: 17),
                         ),
                       ))),
+            ),
+            SizedBox(
+              height: 40,
             )
           ],
         ),

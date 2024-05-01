@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:todo/widgets/category_icons.dart';
 
 class AddItems extends StatelessWidget {
   const AddItems({super.key});
+
+  void categoyFunction(String category) {
+    print('category Icon Pressed $category');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -74,20 +77,30 @@ class AddItems extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         CategoryIcon(
-                            icon: Icons.dining_outlined,
-                            color: Colors.yellow[200]!),
+                          icon: Icons.dining_outlined,
+                          color: Colors.yellow[200]!,
+                          onPressed: categoyFunction,
+                        ),
                         CategoryIcon(
-                            icon: Icons.cast_for_education_outlined,
-                            color: Colors.green[200]!),
+                          icon: Icons.cast_for_education_outlined,
+                          color: Colors.green[200]!,
+                          onPressed: categoyFunction,
+                        ),
                         CategoryIcon(
-                            icon: Icons.travel_explore_outlined,
-                            color: Colors.orange[200]!),
+                          icon: Icons.travel_explore_outlined,
+                          color: Colors.orange[200]!,
+                          onPressed: categoyFunction,
+                        ),
                         CategoryIcon(
-                            icon: Icons.local_grocery_store_outlined,
-                            color: Colors.purple[200]!),
+                          icon: Icons.local_grocery_store_outlined,
+                          color: Colors.purple[200]!,
+                          onPressed: categoyFunction,
+                        ),
                         CategoryIcon(
-                            icon: Icons.health_and_safety_outlined,
-                            color: Colors.pink[200]!),
+                          icon: Icons.health_and_safety_outlined,
+                          color: Colors.pink[200]!,
+                          onPressed: categoyFunction,
+                        ),
                       ],
                     ),
                   ),
