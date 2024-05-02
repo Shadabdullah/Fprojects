@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:todo/widgets/category_icons.dart';
+import 'package:todo/widgets/homepage_categoryicon.dart';
+
+import '../models/todo_model.dart';
 
 class ItemContainer extends StatelessWidget {
-  const ItemContainer({super.key});
+  final Todo todo;
+
+  const ItemContainer({required this.todo, super.key});
+
+  // final Map<String,IconData> iconsMap = [''];
 
   @override
   Widget build(BuildContext context) {
@@ -13,19 +18,19 @@ class ItemContainer extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          // CategoryIcon(icon: Icons.dining_outlined, color: Colors.yellow[100]!),
-          const Column(
+          HomePageCategoryIcon(categoryName: todo.category),
+          Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              const Text(
-                'Sprint',
+              Text(
+                todo.title,
                 style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w700,
                     color: Colors.black),
               ),
               Text(
-                '5:00 AM',
+                todo.time,
                 style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w400,
@@ -38,7 +43,7 @@ class ItemContainer extends StatelessWidget {
             child: Checkbox(
                 fillColor: MaterialStateProperty.all(const Color(0xFFFFFFFF)),
                 checkColor: const Color(0xFF240A34),
-                value: false,
+                value: todo.isDone == 1,
                 activeColor: Colors.redAccent,
                 side: const BorderSide(color: Colors.black87),
                 onChanged: (newValue) {}),

@@ -296,5 +296,6 @@ class _AddItemsState extends State<AddItems> {
             category: categoryHandler,
             isDone: 0,
             note: noteController.text)));
+    Navigator.of(context).pop();
   }
 }

@@ -9,7 +9,14 @@ class BlocTodo extends Bloc<TodoEvent, TodoState> {
     on<AddTodo>((emit, state) async {
       final db = DbHelper();
       final mes = await db.insertTodo(emit.todo);
-      print(mes);
+      add(TodoFetched());
+    });
+
+    on<TodoFetched>((event, emit) async {
+      final db = DbHelper();
+      final todoList = await db.getListOfTodo();
+
+      emit(TodoLoaded(todoList));
     });
   }
 }

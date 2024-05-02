@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:todo/database/database_helper.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:todo/bloc/todo_bloc.dart';
+import 'package:todo/bloc/todo_state.dart';
 import 'package:todo/screens/add_item.dart';
 import 'package:todo/widgets/item_container.dart';
 
-import '../models/todo_model.dart';
+import '../bloc/todo_event.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -13,30 +15,22 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final List<Todo> items = [];
-  final db = DbHelper();
-  Future<void> _loadDatabase() async {
-    final items = await db.getListOfTodo();
-    print(items);
-  }
-
   @override
   void initState() {
     super.initState();
-    _loadDatabase();
   }
 
   @override
   Widget build(BuildContext context) {
-// Get the path to the directory where databases are stored
-    // Color(0xFFF1F5F9),
+    final bloc = BlocProvider.of<BlocTodo>(context);
+    bloc.add(TodoFetched());
     return Scaffold(
       backgroundColor: const Color(0xFFF1F5F9),
       appBar: AppBar(
         backgroundColor: const Color(0xFF240A34),
         centerTitle: true,
-        title: const Text(
-          'APRIL 27 2024',
+        title: Text(
+          DateTime.now().toString(),
           style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.bold,
@@ -73,23 +67,21 @@ class _HomePageState extends State<HomePage> {
                       margin: const EdgeInsets.only(top: 100),
                       width: 350,
                       height: 300,
-                      child: const SingleChildScrollView(
-                        child: Column(
-                          children: [
-                            ItemContainer(),
-                            ItemContainer(),
-                            ItemContainer(),
-                            ItemContainer(),
-                            ItemContainer(),
-                            ItemContainer(),
-                            ItemContainer(),
-                            ItemContainer(),
-                            ItemContainer(),
-                            ItemContainer(),
-                            ItemContainer(),
-                          ],
-                        ),
-                      ),
+                      child: BlocBuilder<BlocTodo, TodoState>(
+                          builder: (context, state) {
+                        if (state is TodoLoaded) {
+                          final itemsList = state.list;
+                          return ListView.builder(
+                              itemCount: itemsList.length,
+                              itemBuilder: (context, item) {
+                                return ItemContainer(
+                                  todo: itemsList[item],
+                                );
+                              });
+                        } else {
+                          return CircularProgressIndicator();
+                        }
+                      }),
                     ),
                   ),
                 ],
@@ -115,19 +107,7 @@ class _HomePageState extends State<HomePage> {
               height: 200,
               child: const SingleChildScrollView(
                 child: Column(
-                  children: [
-                    ItemContainer(),
-                    ItemContainer(),
-                    ItemContainer(),
-                    ItemContainer(),
-                    ItemContainer(),
-                    ItemContainer(),
-                    ItemContainer(),
-                    ItemContainer(),
-                    ItemContainer(),
-                    ItemContainer(),
-                    ItemContainer(),
-                  ],
+                  children: [],
                 ),
               ),
             ),
