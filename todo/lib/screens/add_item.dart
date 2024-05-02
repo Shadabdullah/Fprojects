@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo/bloc/todo_bloc.dart';
 import 'package:todo/bloc/todo_event.dart';
-import 'package:todo/database/database_helper.dart';
 import 'package:todo/models/todo_model.dart';
 import 'package:todo/widgets/category_icons.dart';
 
@@ -29,6 +28,15 @@ class _AddItemsState extends State<AddItems> {
   final TextEditingController timeController = TextEditingController();
 
   final TextEditingController noteController = TextEditingController();
+
+  @override
+  void dispose() {
+    titleController.dispose();
+    dateController.dispose();
+    timeController.dispose();
+    noteController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -288,14 +296,28 @@ class _AddItemsState extends State<AddItems> {
   }
 
   void _addItems() {
-    BlocProvider.of<BlocTodo>(context).add(AddTodo(
+    // Check if all fields are not empty
+    if (titleController.text.isNotEmpty &&
+        timeController.text.isNotEmpty &&
+        dateController.text.isNotEmpty &&
+        categoryHandler.isNotEmpty &&
+        noteController.text.isNotEmpty) {
+      // Add the todo item
+      BlocProvider.of<BlocTodo>(context).add(AddTodo(
         todo: Todo(
-            title: titleController.text,
-            time: timeController.text,
-            dueDate: dateController.text,
-            category: categoryHandler,
-            isDone: 0,
-            note: noteController.text)));
-    Navigator.of(context).pop();
+          title: titleController.text,
+          time: timeController.text,
+          dueDate: dateController.text,
+          category: categoryHandler,
+          isDone: 0,
+          note: noteController.text,
+        ),
+      ));
+      // Close the current screen
+      Navigator.of(context).pop();
+    } else {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text('Please fill all the fields')));
+    }
   }
 }

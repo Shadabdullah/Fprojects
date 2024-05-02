@@ -17,7 +17,6 @@ class DbHelper {
 
   Future<Database> initializeDb() async {
     final String databasePath = await getDatabasesPath();
-    print('Database path: $databasePath');
 
     return openDatabase(join(databasePath, 'todo.db'), version: 1,
         onCreate: (database, version) async {
@@ -32,7 +31,6 @@ class DbHelper {
           conflictAlgorithm: ConflictAlgorithm.replace);
     } catch (e) {
       // Handle any errors gracefully
-      print('Error inserting todo: $e');
       return -1; // Or throw an exception if appropriate
     }
   }
@@ -44,6 +42,7 @@ class DbHelper {
       return List.generate(
         maps.length,
         (index) => Todo(
+          id: maps[index]['id'],
           title: maps[index]['title'],
           time: maps[index]['time'],
           dueDate: maps[index]['dueDate'],
@@ -54,8 +53,19 @@ class DbHelper {
       );
     } catch (e) {
       // Handle any errors gracefully
-      print('Error getting list of todos: $e');
       return []; // Or throw an exception if appropriate
     }
+  }
+
+  Future<void> updateItem(int id, int isDone) async {
+    final db = await initializeDb();
+    isDone = isDone == 1 ? 0 : 1;
+    await db.update('todoTable', {'isDone': isDone},
+        where: 'id=?', whereArgs: [id]);
+  }
+
+  Future<void> deleteItem(int id) async {
+    final db = await initializeDb();
+    await db.delete('todoTable', where: 'id = ?', whereArgs: [id]);
   }
 }

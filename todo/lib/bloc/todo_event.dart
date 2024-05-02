@@ -9,6 +9,14 @@ class AddTodo extends TodoEvent {
   AddTodo({required this.todo});
 }
 
-class DeleteTodo extends TodoEvent {}
+class DeleteTodo extends TodoEvent {
+  final int id;
 
-class UpdateTodo extends TodoEvent {}
+  DeleteTodo({required this.id});
+}
+
+class UpdateTodo extends TodoEvent {
+  final int id;
+  final int isDone;
+  UpdateTodo({required this.id, required this.isDone});
+}

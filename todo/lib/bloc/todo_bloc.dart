@@ -8,7 +8,7 @@ class BlocTodo extends Bloc<TodoEvent, TodoState> {
   BlocTodo() : super(TodoInitialState()) {
     on<AddTodo>((emit, state) async {
       final db = DbHelper();
-      final mes = await db.insertTodo(emit.todo);
+      await db.insertTodo(emit.todo);
       add(TodoFetched());
     });
 
@@ -17,6 +17,18 @@ class BlocTodo extends Bloc<TodoEvent, TodoState> {
       final todoList = await db.getListOfTodo();
 
       emit(TodoLoaded(todoList));
+    });
+
+    on<UpdateTodo>((emit, state) {
+      final db = DbHelper();
+      db.updateItem(emit.id, emit.isDone);
+      add(TodoFetched());
+    });
+
+    on<DeleteTodo>((emit, state) async {
+      final db = DbHelper();
+      await db.deleteItem(emit.id);
+      add(TodoFetched());
     });
   }
 }

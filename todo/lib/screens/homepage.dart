@@ -30,7 +30,7 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: const Color(0xFF240A34),
         centerTitle: true,
         title: Text(
-          DateTime.now().toString(),
+          DateTime.now().toString().split(' ')[0],
           style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.bold,
@@ -62,26 +62,46 @@ class _HomePageState extends State<HomePage> {
                     alignment: Alignment.topCenter,
                     child: Container(
                       decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(20)),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
                       margin: const EdgeInsets.only(top: 100),
                       width: 350,
                       height: 300,
                       child: BlocBuilder<BlocTodo, TodoState>(
-                          builder: (context, state) {
-                        if (state is TodoLoaded) {
-                          final itemsList = state.list;
-                          return ListView.builder(
-                              itemCount: itemsList.length,
-                              itemBuilder: (context, item) {
-                                return ItemContainer(
-                                  todo: itemsList[item],
-                                );
-                              });
-                        } else {
-                          return CircularProgressIndicator();
-                        }
-                      }),
+                        builder: (context, state) {
+                          if (state is TodoLoaded) {
+                            final itemsList = state.list
+                                .where((element) => element.isDone == 0)
+                                .toList();
+                            if (itemsList.isEmpty) {
+                              return Center(
+                                child: Text(
+                                  'Nothing to do',
+                                  style: TextStyle(
+                                    fontSize: 25,
+                                    color: Colors.grey,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              );
+                            } else {
+                              return ListView.builder(
+                                itemCount: itemsList.length,
+                                itemBuilder: (context, item) {
+                                  return ItemContainer(
+                                    todo: itemsList[item],
+                                  );
+                                },
+                              );
+                            }
+                          } else {
+                            return Center(
+                              child: CircularProgressIndicator(),
+                            );
+                          }
+                        },
+                      ),
                     ),
                   ),
                 ],
@@ -105,10 +125,34 @@ class _HomePageState extends State<HomePage> {
                   color: Colors.white, borderRadius: BorderRadius.circular(20)),
               width: 350,
               height: 200,
-              child: const SingleChildScrollView(
-                child: Column(
-                  children: [],
-                ),
+              child: BlocBuilder<BlocTodo, TodoState>(
+                builder: (context, state) {
+                  if (state is TodoLoaded) {
+                    final itemsDoneList = state.list
+                        .where((element) => element.isDone == 1)
+                        .toList();
+                    if (itemsDoneList.isEmpty) {
+                      return Center(
+                        child: Text(
+                          "0 Completed Task",
+                          style: TextStyle(
+                            fontSize: 25,
+                            color: Colors.grey,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      );
+                    }
+                    return ListView.builder(
+                      itemCount: itemsDoneList.length,
+                      itemBuilder: (context, index) {
+                        return ItemContainer(todo: itemsDoneList[index]);
+                      },
+                    );
+                  } else {
+                    return CircularProgressIndicator();
+                  }
+                },
               ),
             ),
             const SizedBox(
