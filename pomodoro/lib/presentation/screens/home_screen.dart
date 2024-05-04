@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:pomodoro/utils/constants/colors.dart';
 
 import '../widgets/customshapes/myclipper.dart';
 
@@ -10,7 +11,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xffF57752),
+        backgroundColor: secondaryColor,
         title: Text(
           "pomodoro",
           style: Theme.of(context).textTheme.titleMedium,
@@ -21,27 +22,28 @@ class HomeScreen extends StatelessWidget {
           Container(
             height: 200,
             decoration: BoxDecoration(
-              color: const Color(0xffF57752),
+              color: secondaryColor,
               border: Border.all(
-                  width: 0,
-                  color: Color(0xffF57752)), // Set border to invisible
+                  width: 0, color: secondaryColor), // Set border to invisible
             ),
           ),
           Expanded(
             child: Container(
-              height: 400,
               decoration: BoxDecoration(
-                color: const Color(0xffF57752),
+                color: secondaryColor,
                 border: Border.all(
-                    width: 0,
-                    color: Color(0xffF57752)), // Set border to invisible
+                    width: 0, color: secondaryColor), // Set border to invisible
               ),
               child: ClipPath(
                 clipper: MyClipper(),
                 child: Container(
-                  color: Colors.white,
+                  color: darkBackground,
                   alignment: Alignment.center,
-                  child: const Text("Text Here"),
+                  child: Column(
+                    children: [
+                      // Add more children widgets here as needed
+                    ],
+                  ),
                 ),
               ),
             ),
