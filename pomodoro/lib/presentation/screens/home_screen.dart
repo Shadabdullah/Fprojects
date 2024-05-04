@@ -40,9 +40,7 @@ class HomeScreen extends StatelessWidget {
                   color: darkBackground,
                   alignment: Alignment.center,
                   child: Column(
-                    children: [
-                      // Add more children widgets here as needed
-                    ],
+                    children: [],
                   ),
                 ),
               ),
