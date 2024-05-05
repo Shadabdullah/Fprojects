@@ -8,7 +8,7 @@ class TimerApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData.dark(),
-      home: TimeHomePage(),
+      home: TimerPage(),
     );
   }
 }
