@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:responsiveui/dashboard/widgets/activity_detailcard.dart';
 import 'package:responsiveui/dashboard/widgets/header_widget.dart';
+import 'package:responsiveui/dashboard/widgets/line_chart_card.dart';
 
 class DashBoardWidget extends StatefulWidget {
   const DashBoardWidget({super.key});
@@ -15,13 +16,17 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
     return const Column(
       children: [
         SizedBox(
-          height: 40,
+          height: 18,
         ),
         HeaderWidget(),
         SizedBox(
-          height: 40,
+          height: 18,
         ),
-        ActivityDetailCard()
+        ActivityDetailCard(),
+        SizedBox(
+          height: 18,
+        ),
+        LineChartCard()
       ],
     );
   }
