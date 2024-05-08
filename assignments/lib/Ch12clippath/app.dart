@@ -1,4 +1,4 @@
-import 'package:assignments/Ch12clippath/custom_clip.dart';
+import 'package:assignments/Ch12clippath/chip.dart';
 import 'package:flutter/material.dart';
 
 class ClipApp extends StatelessWidget {
@@ -10,6 +10,6 @@ class ClipApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData.dark(),
-        home: CustomClips());
+        home: ChipPract());
   }
 }
