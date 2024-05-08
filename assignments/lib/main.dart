@@ -1,6 +1,6 @@
-import 'package:assignments/ch7Persistence/ShApp.dart';
+import 'package:assignments/Ch12clippath/app.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(ShApp());
+  runApp(const ClipApp());
 }
