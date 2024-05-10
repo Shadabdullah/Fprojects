@@ -1,6 +1,6 @@
-import 'package:blocapp/timerApp/app.dart';
+import 'package:blocapp/todo/app.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(TimerApp());
+  runApp(const TodoApp());
 }
