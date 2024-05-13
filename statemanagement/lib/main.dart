@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-
-import 'getxapp/app.dart';
+import 'package:statemanagement/providerapp/app.dart';
 
 void main() {
-  runApp(const GetxApp());
+  runApp(const ProviderApp());
 }
