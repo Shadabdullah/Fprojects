@@ -23,6 +23,13 @@ class CreateUserParam extends Equatable {
   const CreateUserParam(
       {required this.createdAt, required this.name, required this.avatar});
 
+  // For testig purpose
+  const CreateUserParam.empty()
+      : this(
+            createdAt: '_empty.createdAt',
+            name: '_empty.name',
+            avatar: '_empty.avatar');
+
   @override
   List<Object?> get props => [createdAt, name, avatar];
 }
