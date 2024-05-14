@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import 'getxz/count_controller.dart';
+import 'package:statemanagement/getxapp/controllers/store_controller.dart';
+import 'package:statemanagement/getxapp/store_binding.dart';
 
 class GetxApp extends StatelessWidget {
   const GetxApp({super.key});
@@ -9,33 +9,24 @@ class GetxApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      initialBinding: StoreBinding(),
       debugShowCheckedModeBanner: false,
       theme: ThemeData(useMaterial3: true),
-      home: const HomePageGetx(),
+      home: const HomeGetx(),
     );
   }
 }
 
-class HomePageGetx extends StatelessWidget {
-  const HomePageGetx({super.key});
+class HomeGetx extends GetView<StoreController> {
+  const HomeGetx({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Center(
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          GetBuilder<CountController>(
-              init: CountController(),
-              builder: (_) => Text(_.count.toString())),
-          const SizedBox(height: 50),
-          ElevatedButton(
-              onPressed: () {
-                Get.find<CountController>().increment();
-              },
-              child: Text(''))
-        ],
+        children: [],
       )),
     );
   }
