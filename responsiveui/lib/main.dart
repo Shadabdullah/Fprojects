@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:responsiveui/dashboard/app.dart';
+import 'package:responsiveui/responsive/app.dart';
 
 void main() {
-  runApp(const DashBoardApp());
+  runApp(const ResponsiveApp());
 }
