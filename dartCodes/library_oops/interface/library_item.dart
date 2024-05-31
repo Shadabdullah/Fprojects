@@ -1,7 +1,11 @@
-class LibraryItems {
-  void getStatus() {}
+import '../constants/status_enum.dart';
 
-  void checkOut() {}
+abstract class LibraryItems {
+  ItemStatus getStatus();
 
-  void returnItem() {}
+  void checkOut();
+
+  void returnItem();
+
+  String getTitle();
 }

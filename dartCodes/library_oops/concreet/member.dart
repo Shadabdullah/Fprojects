@@ -1,3 +1,13 @@
-import '../../oops_library.dart';
+import '../abstracts/person.dart';
 
-class Memeber extends Person {}
+class Memebers extends Person {
+  Memebers({required super.id, required super.name});
+
+  @override
+  void register() {
+    print(this.name);
+    print('Registred Successfully');
+  }
+
+  void borrowItem() {}
+}
