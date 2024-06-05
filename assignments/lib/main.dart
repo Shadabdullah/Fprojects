@@ -1,6 +1,6 @@
-import 'package:assignments/Ch12clippath/app.dart';
+import 'package:assignments/iconsax/iconsapp.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const ClipApp());
+  runApp(const IconsaxApp());
 }
