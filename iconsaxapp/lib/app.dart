@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'iconsax_home.dart';
+import 'package:iconsaxapp/homepage.dart';
 
 class IconsaxApp extends StatelessWidget {
   const IconsaxApp({super.key});
@@ -8,9 +7,9 @@ class IconsaxApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
-        theme: ThemeData.dark(),
-        home: const IconsaxView());
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData.dark(useMaterial3: true),
+      home: const IconsaxHomePage(),
+    );
   }
 }
