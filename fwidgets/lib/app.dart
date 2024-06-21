@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fwidgets/basicWidgets/basic.dart';
+import 'package:fwidgets/layout/align.dart';
 
 class FwidgetsApp extends StatelessWidget {
   const FwidgetsApp({super.key});
@@ -9,7 +9,7 @@ class FwidgetsApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData.dark(),
       debugShowCheckedModeBanner: false,
-      home: const BasicWidgets(),
+      home: const AlignWidget(),
     );
   }
 }
