@@ -1,9 +1,11 @@
+import 'package:carch/injection.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'features/increment/presentation/pages/counter_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  await init();
   runApp(const CounterApp());
 }
 
@@ -18,6 +20,7 @@ class CounterApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+      home: CounterScreen(),
     );
   }
 }
